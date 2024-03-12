@@ -1,10 +1,11 @@
-import { createRoot } from 'react-dom/client'
-import './styles.css'
-import { App } from './App'
-import image1 from '../public/Images/juego1.png'
-import image2 from '../public/Images/juego2.png'
-import image3 from '../public/Images/juego3.png'
-import image4 from '../public/Images/juego4.png'
+import { createRoot } from 'react-dom/client';
+import './styles.css';
+import  App  from './App';
+import ImagesContext from './context/ImagesContext';
+import image1 from './assets/images/juego1.png';
+import image2 from './assets/images/juego2.jpg';
+import image3 from './assets/images/juego3.png';
+import image4 from './assets/images/juego4.png';
 
 const images = [
   // // Front
@@ -20,4 +21,11 @@ const images = [
   { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: image4, item: 4 }
 ]
 
-createRoot(document.getElementById('root')).render(<App images={images} />)
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
+  <ImagesContext.Provider value={images}>
+    <App />
+  </ImagesContext.Provider>
+);
