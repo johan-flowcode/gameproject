@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client';
 import './styles.css';
-import  App  from './App';
+import App from './App';
 import ImagesContext from './context/ImagesContext';
-import image1 from './assets/images/juego1.png';
+import image1 from './assets/images/juego1.jpg';
 import image2 from './assets/images/juego2.jpg';
-import image3 from './assets/images/juego3.png';
+import image3 from './assets/images/juego3.jpg';
 import image4 from './assets/images/juego4.png';
 
 const images = [
@@ -14,11 +14,11 @@ const images = [
   // { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(416430) },
   // { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(310452) },
   // Left
-  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: image1, item: 1 },
-  { position: [-1.5, 0, 0.25], rotation: [0, Math.PI / 6, 0], url: image2, item: 2 },
+  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: image1, item: 'juego1' },
+  { position: [-1.5, 0, 0.25], rotation: [0, Math.PI / 6, 0], url: image2, item: 'juego2' },
   // Right
-  { position: [1.5, 0, 0.25], rotation: [0, -Math.PI / 6, 0], url: image3, item: 3 },
-  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: image4, item: 4 }
+  { position: [1.5, 0, 0.25], rotation: [0, -Math.PI / 6, 0], url: image3, item: 'juego3' },
+  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: image4, item: 'login' }
 ]
 
 const rootElement = document.getElementById('root');

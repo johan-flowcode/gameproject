@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { useEffect, useRef, useState, Suspense, useContext } from 'react';
+import Modal from '../components/modal/Modal';
 import ImagesContext from '../context/ImagesContext.js';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { useCursor, MeshReflectorMaterial, Image, Text, Environment, Html, Float } from '@react-three/drei';
@@ -15,49 +16,76 @@ const GOLDENRATIO = 1.61803398875
 
 const Home = () => {
     const images = useContext(ImagesContext);
+    const [modalOpen, setModalOpen] = useState('');
+    const [, setLocation] = useLocation();
+
+    const openModal = (modalName) => setModalOpen(modalName);
+    const closeModal = () => setModalOpen('');
 
     return (
-        <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
-            <color attach="background" args={['#24172F']} />
+        <>
+            <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
+                <color attach="background" args={['#24172F']} />
 
-            <group position={[0, -0.5, 0]}>
-                <Frames images={images} />
-                <Suspense fallback={null}>
-                    <CustomBackground />
-                </Suspense>
-                <mesh position={[0, -0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                    <circleGeometry args={[8, 20]} />
-                    <MeshReflectorMaterial
-                        blur={[300, 100]}
-                        resolution={2048}
-                        mixBlur={1}
-                        mixStrength={15}
-                        roughness={0.99}
-                        depthScale={1.1}
-                        minDepthThreshold={0.4}
-                        maxDepthThreshold={1.3}
-                        color="#211727"
-                        metalness={0.8}
-                    />
-                </mesh>
-            </group>
+                <group position={[0, -0.5, 0]}>
+                    <Frames images={images} openModal={openModal} setLocation={setLocation} />
+                    <Suspense fallback={null}>
+                        <CustomBackground />
+                    </Suspense>
+                    <mesh position={[0, -0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                        <circleGeometry args={[8, 20]} />
+                        <MeshReflectorMaterial
+                            blur={[300, 100]}
+                            resolution={2048}
+                            mixBlur={1}
+                            mixStrength={15}
+                            roughness={0.99}
+                            depthScale={1.1}
+                            minDepthThreshold={0.4}
+                            maxDepthThreshold={1.3}
+                            color="#211727"
+                            metalness={0.8}
+                        />
+                    </mesh>
+                </group>
 
-            <EffectComposer>
-                <Vignette offset={0.5} darkness={0.7} premultiply />
-                <Noise premultiply />
-                <Bloom mipmapBlur intensity={0.6} luminanceThreshold={0.9} />
-            </EffectComposer>
+                <EffectComposer>
+                    <Vignette offset={0.5} darkness={0.7} premultiply />
+                    <Noise premultiply />
+                    <Bloom mipmapBlur intensity={0.6} luminanceThreshold={0.9} />
+                </EffectComposer>
 
-            <CustomTexts />
-            <Environment preset="city" />
-        </Canvas>
+                <CustomTexts />
+                <Environment preset="city" />
+            </Canvas>
+
+            <Modal isOpen={modalOpen === 'login'} close={closeModal}>
+                {/* Contenido del modal de login */}
+            </Modal>
+
+            <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
+                <p>Información </p>
+                <button className="modal-button" onClick={() => setLocation('/juego2')}>Ir al Juego</button>
+            </Modal>
+
+            <Modal isOpen={modalOpen === 'juego3'} close={closeModal}>
+                <p>Información </p>
+                <button className="modal-button" onClick={() => setLocation('/juego3')}>Ir al Juego</button>
+            </Modal>
+
+            <Modal isOpen={modalOpen === 'juego1'} close={closeModal}>
+                <p>Información</p>
+            </Modal>
+        </>
+
     );
 };
-function Frames({ images, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
+
+function Frames({ images, openModal, setLocation, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
     const ref = useRef()
     const clicked = useRef()
     const [, params] = useRoute('/item/:id')
-    const [, setLocation] = useLocation()
+
     useEffect(() => {
         clicked.current = ref.current.getObjectByName(params?.id)
         if (clicked.current) {
@@ -77,54 +105,67 @@ function Frames({ images, q = new THREE.Quaternion(), p = new THREE.Vector3() })
         <>
             <group
                 ref={ref}
-                onClick={(e) => (e.stopPropagation(), setLocation(clicked.current === e.object ? '/' : '/item/' + e.object.name))}
+                onClick={(e) => e.stopPropagation()}
                 onPointerMissed={() => setLocation('/')}>
-                {images.map((props) => <Frame key={props.url} {...props} /> /* prettier-ignore */)}
+                {images.map((props) => <Frame key={props.url} {...props} openModal={openModal} setLocation={setLocation} /> /* prettier-ignore */)}
             </group>
         </>
     );
 };
 
-function Frame({ url, c = new THREE.Color(), ...props }) {
+
+function Frame({ url, item, openModal, c = new THREE.Color(), ...props }) {
     const image = useRef()
     const frame = useRef()
     const [, params] = useRoute('/item/:id')
     const [hovered, hover] = useState(false)
     const [rnd] = useState(() => Math.random())
     const name = getUuid(url)
-    const itemName = props.item
-  
+
+    const handleClick = (e) => {
+        e.stopPropagation();
+        if (item === 'juego2') {
+            openModal('juego2');
+        } else if (item === 'juego3') {
+            openModal('juego3');
+        } else if (item === 'login') {
+            openModal('login');
+        } else if (item === 'juego1') {
+            openModal('juego1');
+        }
+    };
+
+
     const isActive = params?.id === name
     useCursor(hovered)
     useFrame((state, dt) => {
-      image.current.material.zoom = 0.9 - Math.sin(rnd * 10000 + state.clock.elapsedTime / 8) / 10.5
-      easing.damp3(image.current.scale, [0.85 * (!isActive && hovered ? 0.85 : 1), 0.9 * (!isActive && hovered ? 0.905 : 1), 1], 0.1, dt)
-      easing.dampC(frame.current.material.color, hovered ? 'yellow' : 'violet', 0.1, dt)
+        image.current.material.zoom = 0.9 - Math.sin(rnd * 10000 + state.clock.elapsedTime / 8) / 10.5
+        easing.damp3(image.current.scale, [0.85 * (!isActive && hovered ? 0.85 : 1), 0.9 * (!isActive && hovered ? 0.905 : 1), 1], 0.1, dt)
+        easing.dampC(frame.current.material.color, hovered ? 'yellow' : 'violet', 0.1, dt)
     })
     return (
-      <group {...props}>
-        <mesh
-          name={name}
-          onPointerOver={(e) => (e.stopPropagation(), hover(true))}
-          onPointerOut={() => hover(false)}
-          scale={[1.5, 1.8, 0.15]}
-          position={[0, 0.95, 0]}>
-          <boxGeometry />
-          <meshStandardMaterial color="#151515" metalness={0.5} roughness={0.5} envMapIntensity={2} />
-          <mesh ref={frame} raycast={() => null} scale={[0.9, 0.93, 0.9]} position={[0, 0, 0.2]}>
-            <boxGeometry />
-            <meshBasicMaterial toneMapped={false} fog={false} />
-          </mesh>
-          <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
-          <Html scale={0.17} rotation={[0, 0, 0]} position={[0, 0.4, 0]} transform>
-            <div className="annotation">
-              
-            </div>
-          </Html>
-        </mesh>
-      </group>
+        <group {...props}>
+            <mesh
+                name={name}
+                onPointerOver={(e) => (e.stopPropagation(), hover(true))}
+                onPointerOut={() => hover(false)}
+                onClick={handleClick}
+                scale={[1.5, 1.8, 0.15]}
+                position={[0, 0.95, 0]}>
+                <boxGeometry />
+                <meshStandardMaterial color="#151515" metalness={0.5} roughness={0.5} envMapIntensity={2} />
+                <mesh ref={frame} raycast={() => null} scale={[0.9, 0.93, 0.9]} position={[0, 0, 0.2]}>
+                    <boxGeometry />
+                    <meshBasicMaterial toneMapped={false} fog={false} />
+                </mesh>
+                <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
+                <Html scale={0.17} rotation={[0, 0, 0]} position={[0, 0.4, 0]} transform>
+
+                </Html>
+            </mesh>
+        </group>
     )
-  }
+}
 
 
 
@@ -141,8 +182,8 @@ function CustomTexts() {
                 floatingRange={[0.1, -0.3]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
             >
                 <Text
-                    curveRadius={-3.9}
-                    outlineWidth={0.2}
+                    curveRadius={-2.9}
+                    outlineWidth={0.1}
                     outlineColor={'#6699cc'}
                     color={'#24172F'}
                     font="/ARCADE_R.TTF"
@@ -150,12 +191,12 @@ function CustomTexts() {
                     anchorX="center"
                     anchorY="top"
                     position={[0, 3.1, 0]}
-                    fontSize={1.1}>
-                    NABOO
+                    fontSize={0.7}>
+                    WEAREVR
                 </Text>
 
                 <Text
-                    outlineWidth={0.09}
+                    outlineWidth={0.07}
                     outlineColor={'#6699cc'}
                     color={'#24172F'}
                     font="/ARCADE_R.TTF"
