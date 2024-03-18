@@ -1,23 +1,23 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  html,
-  body,
-  #root {
-    width: 100vw;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  body {
-    color: white;
-    user-select: none;
-  }
-  
-  /*.annotation {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  color: white;
+  user-select: none;
+}
+
+/*.annotation {
     outline: none;
     border: none;
     font-size: 3px;
