@@ -61,7 +61,7 @@ const Home = () => {
 
       <Modal isOpen={modalOpen === 'juego1'} close={closeModal}>
       <p>Información </p>
-      <button className="modal-button" onClick={() => window.open('https://wle-notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
+      <button className="modal-button" onClick={() => window.open('https://notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
