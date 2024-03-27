@@ -59,13 +59,14 @@ const Home = () => {
         <Environment preset="city" />
       </Canvas>
 
-      <Modal isOpen={modalOpen === 'login'} close={closeModal}>
-        {/* Contenido del modal de login */}
+      <Modal isOpen={modalOpen === 'juego1'} close={closeModal}>
+      <p>Información </p>
+      <button className="modal-button" onClick={() => window.open('https://wle-notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
         <p>Información </p>
-        <button className="modal-button" onClick={() => setLocation('/juego2')}>Ir al Juego</button>
+        <button className="modal-button" onClick={() => window.open('https://golfvr.vercel.app/', '_blank')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego3'} close={closeModal}>
@@ -73,8 +74,9 @@ const Home = () => {
         <button className="modal-button" onClick={() => setLocation('/juego3')}>Ir al Juego</button>
       </Modal>
 
-      <Modal isOpen={modalOpen === 'juego1'} close={closeModal}>
-        <p>Información</p>
+      <Modal isOpen={modalOpen === 'juego4'} close={closeModal}>
+      <p>Información </p>
+        <button className="modal-button" onClick={() => setLocation('/juego4')}>Ir al Juego</button>
       </Modal>
     </>
 
@@ -124,14 +126,14 @@ function Frame({ url, item, openModal, c = new THREE.Color(), ...props }) {
 
   const handleClick = (e) => {
     e.stopPropagation();
-    if (item === 'juego2') {
+    if (item === 'juego1') {
+      openModal('juego1');
+    } else if (item === 'juego2') {
       openModal('juego2');
     } else if (item === 'juego3') {
       openModal('juego3');
-    } else if (item === 'login') {
-      openModal('login');
-    } else if (item === 'juego1') {
-      openModal('juego1');
+    } else if (item === 'juego4') {
+      openModal('juego4');
     }
   };
 
