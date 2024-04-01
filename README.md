@@ -26,7 +26,8 @@ A continuación, una tabla de las tecnologías y herramientas que hacen posible
 | `Wonderland`            | Motor de juego para experiencias interactivas     |
 | `Model Viewer`          | Visualización de modelos 3D en la web             |
 
-Equipo:
+Equipo de desarrollo:
+
 | Nombre             | GitHub Perfil                              |
 |--------------------|--------------------------------------------|
 | Paola Guerra       | [Paola-Guerra](https://github.com/Paola-Guerra)       |
