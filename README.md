@@ -27,10 +27,10 @@ A continuación, una tabla de las tecnologías y herramientas que hacen posible
 | `Model Viewer`          | Visualización de modelos 3D en la web             |
 
 Equipo de desarrollo:
-
-| Nombre             | GitHub Perfil                              |
-|--------------------|--------------------------------------------|
-| Paola Guerra       | [Paola-Guerra](https://github.com/Paola-Guerra)       |
-| Glezino            | [Glezino](https://github.com/Glezino)                |
-| Ale Data Analyst   | [AleDataAnalyst](https://github.com/AleDataAnalyst)  |
-| Cata Arias         | [cataarias](https://github.com/cataarias)            |
+| Nombre             | GitHub Perfil                                      |
+|--------------------|----------------------------------------------------|
+| Paola Guerra       | [Paola-Guerra](https://github.com/Paola-Guerra)    |
+| Glezino            | [Glezino](https://github.com/Glezino)              |
+| Ale Data Analyst   | [AleDataAnalyst](https://github.com/AleDataAnalyst)|
+| Cata Arias         | [cataarias](https://github.com/cataarias)          |
+| Johan Flowcode     | [johan-flowcode](https://github.com/johan-flowcode)|
