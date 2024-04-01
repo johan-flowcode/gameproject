@@ -36,4 +36,5 @@ export default class Mob extends Object3D {
         }
     }
 }
+
 */

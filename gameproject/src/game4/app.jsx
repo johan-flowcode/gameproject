@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Scene, PerspectiveCamera, WebGLRenderer, Mesh, BoxGeometry, PointLight, MeshPhongMaterial } from 'three'
 import './style.css';
 import * as THREE from 'three';
 import Camera from './engine/camera';
@@ -7,9 +6,9 @@ import Light from './engine/light';
 import Graphic from './engine/graphic';
 import World from './entity/world';
 import Player from './entity/player';
-//import Mob from './entity/mob';
 import { loadWorld, loadEntity } from './tool/loader';
 import physic from './engine/physic';
+//import Mob from './entity/mob';
 
 const GameApp = () => {
     const canvasRef = useRef(null);
@@ -24,9 +23,10 @@ const GameApp = () => {
             const camera = new Camera();
             const world = new World(assetW.visuals, assetW.colliders, physic);
             const player = new Player(assetP, physic);
+            const light = new Light();
             //const mobPosition = new THREE.Vector3(0, 0, 5);
             //const mob = new Mob(assetM, mobPosition, physic);
-            const light = new Light();
+            
 
             scene.add(world);
             scene.add(light);
@@ -37,9 +37,9 @@ const GameApp = () => {
             graphic.onUpdate((dt) => {
                 physic.step();
                 player.update(dt);
-                //mob.update(dt, player);
                 camera.update(player);
                 light.update(player);
+                //mob.update(dt, player);
             });
         };
 
