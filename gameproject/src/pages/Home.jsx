@@ -65,7 +65,7 @@ const Home = () => {
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
-        <p>Información </p>
+        <p> </p>
         <button className="modal-button" onClick={() => window.open('https://golfvr.vercel.app/', '_blank')}>Ir al Juego</button>
       </Modal>
 

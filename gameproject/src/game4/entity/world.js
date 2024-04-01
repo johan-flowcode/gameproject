@@ -1,6 +1,8 @@
 import { Object3D } from 'three'
 import { createRigidBodyFixed } from '../tool/function'
 
+
+
 export default class World extends Object3D {
   constructor(visuals, colliders, physic) {
     super()

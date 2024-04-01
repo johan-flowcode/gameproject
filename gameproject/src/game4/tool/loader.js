@@ -27,3 +27,11 @@ export async function loadEntity(path) {
   mesh.clips = glb.animations
   return mesh
 }
+
+export async function loadMob(path) {
+  const glb = await loaderGlb.loadAsync(path);
+  const mesh = glb.scene.children[0];
+  browse(mesh, (m) => { m.castShadow = true });
+  mesh.clips = glb.animations; 
+  return mesh;
+}

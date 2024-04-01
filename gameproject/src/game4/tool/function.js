@@ -58,3 +58,41 @@ export function range(angle1, angle2) {
   angle < -Math.PI ? angle + Math.PI * 2 : angle
   return angle
 }
+
+/*
+// Genera un número entero aleatorio entre dos valores, incluyendo ambos límites.
+export function randomInt(min = 0, max = 1) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+// Calcula la distancia entre dos puntos.
+export function getDistance(point1, point2) {
+  const dx = point1.x - point2.x
+  const dz = point1.z - point2.z
+  return Math.sqrt(dx * dx + dz * dz)
+}
+
+// Calcula el ángulo de un vector.
+export function angleOfVector(point) {
+  return Math.atan2(-point.y, point.x) + Math.PI / 2
+}
+
+// Calcula el ángulo entre dos puntos.
+export function getAngle(point1, point2) {
+  const dx = point1.x - point2.x
+  const dz = point1.z - point2.z
+  return Math.atan2(-dz, dx) + Math.PI / 2
+}
+
+// Devuelve la diferencia absoluta entre dos ángulos.
+export function getGapAbs(angle1, angle2) {
+  let angle = ((angle1 - angle2 + Math.PI) % (Math.PI * 2)) - Math.PI
+  angle < -Math.PI ? angle + Math.PI * 2 : angle
+  return Math.abs(angle)
+}
+
+
+// Genera un booleano aleatorio basado en una probabilidad dada.
+export function randomBool(positiveProbability = 0.5) {
+  return Math.random() < positiveProbability
+}*/
