@@ -60,12 +60,18 @@ const Home = () => {
       </Canvas>
 
       <Modal isOpen={modalOpen === 'juego1'} close={closeModal}>
-      <p>Información </p>
-      <button className="modal-button" onClick={() => window.open('https://notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
+        <p>Shooter de Patitos:
+          ¡Prepárate para una experiencia de tiro emocionante y llena de diversión!
+          En nuestro juego de disparos en VR, equipado con las gafas Media Quest,
+          tu misión es eliminar las cajas en movimiento mientras disparas patitos. </p>
+        <button className="modal-button" onClick={() => window.open('https://notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
-        <p> </p>
+        <p>Golf Experience:
+          Experimenta el golf de una manera completamente nueva con nuestro juego de golf en VR,
+          compatible con las gafas Media Quest.
+          Sumérgete en campos virtuales impresionantes y perfecciona tu swing en un entorno realista y emocionante.</p>
         <button className="modal-button" onClick={() => window.open('https://golfvr.vercel.app/', '_blank')}>Ir al Juego</button>
       </Modal>
 
@@ -75,7 +81,9 @@ const Home = () => {
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego4'} close={closeModal}>
-      <p>Información </p>
+        <p>Vikingo Fun:
+          ¡Embárcate en una emocionante aventura como un intrépido vikingo en nuestro juego en 3D, donde empuñarás una poderosa lanza para enfrentar desafíos épicos!
+          Conviértete en el héroe de tu propia leyenda vikinga mientras exploras impresionantes paisajes y te enfrentas a enemigos feroces. </p>
         <button className="modal-button" onClick={() => setLocation('/juego4')}>Ir al Juego</button>
       </Modal>
     </>
@@ -211,7 +219,7 @@ function CustomTexts() {
         </Text>
       </Float>
       <Text maxWidth={1} anchorX="center" anchorY="top" textAlign="center" position={[0, 0.3, 1]} fontSize={0.1} depthOffset={1}>
-        Click on images to view details.
+        Haz click en imágenes para ver detalles.
       </Text>
     </>
   );

@@ -12,7 +12,7 @@
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #d05ce0dd 0%, #f7548598 100%);
+  background: linear-gradient(135deg, #1d4369 0%, #6699cca7 100%);
   padding: 50px;
   border-radius: 8px;
   width: 70%;
@@ -33,6 +33,8 @@
 }
 
 .modal-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
   background-color: #600b6f;
   color: white;
   border: none;
@@ -45,4 +47,10 @@
 
 .modal-button:hover {
   background-color: #5fc4f7;
+}
+
+p{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.3em;
+  line-height:1.6em ;
 }
