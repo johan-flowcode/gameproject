@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import './style.css';
 import * as THREE from 'three';
 import Camera from './engine/camera';
 import Light from './engine/light';
