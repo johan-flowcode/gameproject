@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import Game3App from '../game3/app.jsx'; // Asegúrate de que la ruta es correcta
+import Game3App from '../game3/app.jsx'; 
 
 const Juego3 = () => {
   return (

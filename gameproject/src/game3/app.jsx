@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'; // Asegúrate de que la ruta es correcta
+import './style.css'; 
 import perrito from '../assets/images/perrito.png';
 import vikingo from '../assets/images/vikingo.png';
 
