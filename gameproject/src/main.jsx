@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 import App from './App';
 import ImagesContext from './context/ImagesContext';
-import image1 from './assets/images/juego1.jpg';
+import image1 from './assets/images/juego1.jpeg';
 import image2 from './assets/images/juego2.jpg';
 import image3 from './assets/images/juego3.jpg';
 import image4 from './assets/images/juego4.jpg';

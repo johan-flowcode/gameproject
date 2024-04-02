@@ -64,7 +64,7 @@ const Home = () => {
           ¡Prepárate para una experiencia de tiro emocionante y llena de diversión!
           En nuestro juego de disparos en VR, equipado con las gafas Media Quest,
           tu misión es eliminar las cajas en movimiento mientras disparas patitos. </p>
-        <button className="modal-button" onClick={() => window.open('https://notaimlab.vercel.app', '_blank')}>Ir al Juego</button>
+        <button className="modal-button" onClick={() => window.open('https://bitbusters.vercel.app/', '_blank')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego2'} close={closeModal}>
@@ -76,8 +76,9 @@ const Home = () => {
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego3'} close={closeModal}>
-        <p>Información </p>
-        <button className="modal-button" onClick={() => setLocation('/juego3')}>Ir al Juego</button>
+        <p>Descubre la magia de la realidad aumentada en la palma de tu mano.
+           Solo necesitas tu teléfono y acceder a una URL especial para que una imagen virtual cobre vida en tu entorno.</p>
+        <button className="modal-button" onClick={() =>  setLocation('/juego3')}>Ir al Juego</button>
       </Modal>
 
       <Modal isOpen={modalOpen === 'juego4'} close={closeModal}>
@@ -195,7 +196,7 @@ function CustomTexts() {
           curveRadius={-2.9}
           outlineWidth={0.1}
           outlineColor={'#6699cc'}
-          color={'#24172F'}
+          color={'#600b6f'}
           font="/ARCADE_R.TTF"
           maxWidth={3}
           anchorX="center"
@@ -208,7 +209,7 @@ function CustomTexts() {
         <Text
           outlineWidth={0.07}
           outlineColor={'#6699cc'}
-          color={'#24172F'}
+          color={'#600b6f'}
           font="/ARCADE_R.TTF"
           maxWidth={3}
           anchorX="center"
